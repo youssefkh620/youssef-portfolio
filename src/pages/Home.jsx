@@ -1,14 +1,39 @@
 import Typewriter from "typewriter-effect";
 import heroImg from "../assets/heroImg.svg";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaReact, FaMobileAlt } from "react-icons/fa";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { SlSocialLinkedin } from "react-icons/sl";
 import reactImg from "../assets/reactImg.svg";
 import tailwindImg from "../assets/tailwindImg.svg";
+import { FaLaptopCode, FaGraduationCap } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
-      <section className="h-screen relative pt-20  flex items-center justify-between bg-[#07111F]  px-3 md:px-5">
+      <Hero />
+      <About />
+    </>
+  );
+}
+
+function Links({ link, icon }) {
+  return (
+    <a
+      className="inline-flex items-center justify-center p-2.5
+  text-[#94A3B8]
+  border border-[#38BDF8]/12
+  bg-[#0F1D31] rounded-xl"
+      href={link}
+    >
+      {icon}
+    </a>
+  );
+}
+
+function Hero() {
+  return (
+    <>
+      <section className="h-screen pb-10 relative pt-20  flex items-center justify-between bg-[#07111F]  px-3 md:px-5">
         <div>
           <p className="mb-7 font-medium text-[13px] text-[#38BDF8] py-1.5 px-3.5 border border-[#38BDF8]/20 w-fit flex items-center gap-1.5 rounded-2xl bg-[#38BDF8]/10">
             <span className="flex w-1.5 h-1.5 bg-[#38BDF8] rounded-full"></span>{" "}
@@ -67,16 +92,73 @@ export default function Home() {
   );
 }
 
-function Links({ link, icon }) {
+function About() {
   return (
-    <a
-      className="inline-flex items-center justify-center p-2.5
-  text-[#94A3B8]
-  border border-[#38BDF8]/12
-  bg-[#0F1D31] rounded-xl"
-      href={link}
-    >
-      {icon}
-    </a>
+    <>
+      <section className="w-full bg-[#0B1628] px-4 md:px-5 py-16">
+        <div className="my-8">
+          <p className="text-[#38BDF8] font-semibold mb-3">ABOUT ME</p>
+          <h1 className="text-[#F8FAFC] font-extrabold text-[28px]">
+            Turning ideas into clean, functional interfaces.
+          </h1>
+        </div>
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="md:w-[35%] ">
+            <div className="text-[#94A3B8] mb-8">
+              I am Youssef Khaled, a Frontend Developer focused on building
+              clean, responsive interfaces using React and modern web
+              technologies.
+              <br />
+              <br />
+              My approach centers on clarity, performance, and user experience,
+              as I transform design concepts into meticulously crafted,
+              accessible web applications.
+            </div>
+            <div>
+              <Link
+                to={"/about"}
+                className="mb-3 w-fit md:w-fit font-semibold  text-black bg-[#38BDF8] rounded-md py-3 px-6"
+              >
+                More About Me
+              </Link>
+            </div>
+          </div>
+          <div className="md:w-1/2 flex flex-col gap-4 w-full">
+            <Focus
+              title={"Field"}
+              desc={"Information Systems"}
+              icon={<FaGraduationCap />}
+            />
+            <Focus
+              title={"Focus"}
+              desc={"Frontend Development"}
+              icon={<FaLaptopCode />}
+            />
+            <Focus
+              title={"Primary Framework"}
+              desc={"React.js "}
+              icon={<FaReact />}
+            />
+            <Focus
+              title={"Specialty"}
+              desc={"Responsive Web Design"}
+              icon={<FaMobileAlt />}
+            />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Focus({ icon, title, desc }) {
+  return (
+    <div className="flex items-center gap-4 w-full bg-[#0F1D31] border border-[#38BDF8]/12 hover:border-[#38BDF8] rounded-xl py-4 px-5 duration-300 ease-in-out">
+      <div className="text-[#D0D5DB] text-2xl">{icon}</div>
+      <div>
+        <h1 className="text-[#94A3B8] text-[14px]">{title}</h1>
+        <p className="text-[#F8FAFC] font-semibold text-[15px]">{desc}</p>
+      </div>
+    </div>
   );
 }
