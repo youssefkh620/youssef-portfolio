@@ -8,7 +8,7 @@ export default function Navbar() {
     setMenu((prev) => !prev);
   };
   return (
-    <nav className="flex items-center justify-between bg-[#07111F] py-5 px-3 md:px-5 fixed w-full">
+    <nav className="flex items-center justify-between bg-[#07111F] py-5 px-3 md:px-5 fixed w-full z-50">
       <div>
         <h1 className="text-cyan-400">
           &lt; <span className="text-white font-bold">Youssef Khaled</span>{" "}
@@ -123,20 +123,19 @@ export default function Navbar() {
             <NavLink
               to={"/contact"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-[#38BDF8] border-b border-[#102A41] pb-4 w-full"
-                  : "text-[#94A3B8]"
+                isActive ? "text-[#38BDF8] " : "text-[#94A3B8]"
               }
             >
               Contact
             </NavLink>
+
             <a
               href="https://github.com/youssefkh620"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-[#94A3B8] py-3 border-t border-[#102A41] pb-4 w-full"
             >
-              <FaGithub size={20} className="text-[#94A3B8] " />
+              <FaGithub size={20} /> GitHub
             </a>
           </ul>
         )}
