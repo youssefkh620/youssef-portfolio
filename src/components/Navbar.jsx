@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 export default function Navbar() {
@@ -7,8 +7,28 @@ export default function Navbar() {
   const menuToogle = function () {
     setMenu((prev) => !prev);
   };
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    function handelScroll() {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+    window.addEventListener("scroll", handelScroll);
+    return () => {
+      window.removeEventListener("scroll", handelScroll);
+    };
+  }, []);
   return (
-    <nav className="flex items-center justify-between bg-[#07111F] py-5 px-3 md:px-5 fixed w-full z-50">
+    <nav
+      className={`fixed top-0 left-0 z-50 w-full flex items-center justify-between px-3 md:px-5 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#07111F]/90 backdrop-blur-md shadow-lg py-3"
+          : "bg-[#07111F] py-5"
+      }`}
+    >
       <div>
         <h1 className="text-cyan-400">
           &lt; <span className="text-white font-bold">Youssef Khaled</span>{" "}
@@ -81,7 +101,7 @@ export default function Navbar() {
           <FaGithub size={20} className="text-[#94A3B8] " />
         </a>
       </ul>
-      <navmenu className="md:hidden">
+      <div className="md:hidden">
         <button
           onClick={menuToogle}
           className={`transition-transform ${menu ? "rotate-90" : "rotate-0"} hover:cursor-pointer text-[#94A3B8]`}
@@ -139,7 +159,7 @@ export default function Navbar() {
             </a>
           </ul>
         )}
-      </navmenu>
+      </div>
     </nav>
   );
 }

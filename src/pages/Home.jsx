@@ -7,11 +7,19 @@ import reactImg from "../assets/reactImg.svg";
 import tailwindImg from "../assets/tailwindImg.svg";
 import { FaLaptopCode, FaGraduationCap } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { skillsContext } from "../context/SkillsContext";
+import { Bold } from "lucide-react";
+import { section } from "motion/react-client";
+import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import ProjectCard from "../components/ProjectCard";
 export default function Home() {
   return (
     <>
       <Hero />
       <About />
+      <SkillsSection />
+      <ProjectCard />
     </>
   );
 }
@@ -160,5 +168,51 @@ function Focus({ icon, title, desc }) {
         <p className="text-[#F8FAFC] font-semibold text-[15px]">{desc}</p>
       </div>
     </div>
+  );
+}
+
+function SkillsSection() {
+  const skills = useContext(skillsContext);
+
+  return (
+    <section className="px-4 md:px-5 py-16 bg-[#07111F]">
+      <div className="mb-8 flex items-end  justify-between">
+        <div>
+          <h3 className="text-[#38BDF8] font-semibold mb-3">MY SKILLS</h3>
+          <h1 className="text-[#F8FAFC] font-extrabold text-[28px]">
+            Technologies I work with
+          </h1>
+        </div>
+        <Link
+          to={"/about"}
+          className="text-[#38BDF8] flex items-center gap-1 hover:gap-2 duration-300 ease-in-out"
+        >
+          View All Skills <MdOutlineKeyboardDoubleArrowRight />
+        </Link>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-5  gap-4">
+        {skills
+          .filter((skill) => skill.category === "Frontend")
+          .map((skill) => {
+            const Icon = skill.icon;
+            return (
+              <div
+                className="flex flex-col items-center gap-3 py-5 px-4 rounded-xl bg-[#0F1D31] border border-[#38BDF8]/12 hover:border-[#38BDF8] duration-300 ease-in-out transform hover:-translate-y-1"
+                key={skill.id}
+              >
+                <h1>
+                  <Icon
+                    style={{
+                      color: skill.color,
+                      fontSize: "30px",
+                    }}
+                  />
+                </h1>
+                <p className="font-bold text-white">{skill.name}</p>
+              </div>
+            );
+          })}
+      </div>
+    </section>
   );
 }
