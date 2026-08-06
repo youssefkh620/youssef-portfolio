@@ -13,12 +13,14 @@ import { Bold } from "lucide-react";
 import { section } from "motion/react-client";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import ProjectCard from "../components/ProjectCard";
+import { ProjectsContext } from "../context/ProjectsContext";
 export default function Home() {
   return (
     <>
       <Hero />
       <About />
       <SkillsSection />
+      <ProjectsSection />
     </>
   );
 }
@@ -213,5 +215,19 @@ function SkillsSection() {
           })}
       </div>
     </section>
+  );
+}
+function ProjectsSection() {
+  const { projects } = useContext(ProjectsContext);
+  return (
+    <>
+      <section className="bg-[#07111F] py-10 px-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {projects.slice(0, 3).map((pro) => (
+            <ProjectCard key={pro.id} project={pro} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

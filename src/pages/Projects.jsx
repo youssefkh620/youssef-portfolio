@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ProjectsContext } from "../context/ProjectsContext";
-
 import ProjectCard from "../components/ProjectCard";
 
 export default function Projects() {
