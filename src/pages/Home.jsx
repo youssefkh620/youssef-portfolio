@@ -19,7 +19,6 @@ export default function Home() {
       <Hero />
       <About />
       <SkillsSection />
-      <ProjectCard />
     </>
   );
 }
