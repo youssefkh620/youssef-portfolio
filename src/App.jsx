@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import { SkillsProvider } from "./context/SkillsContext";
 import { ProjectsProvider } from "./context/ProjectsContext";
+import Footer from "./components/Footer";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
+          <Footer />
         </SkillsProvider>
       </ProjectsProvider>
     </>

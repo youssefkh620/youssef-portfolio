@@ -21,6 +21,7 @@ export default function Home() {
       <About />
       <SkillsSection />
       <ProjectsSection />
+      <ContactSection />
     </>
   );
 }
@@ -221,13 +222,34 @@ function ProjectsSection() {
   const { projects } = useContext(ProjectsContext);
   return (
     <>
-      <section className="bg-[#07111F] py-10 px-5">
+      <section className="bg-[#0B1628] py-10 px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.slice(0, 3).map((pro) => (
             <ProjectCard key={pro.id} project={pro} />
           ))}
         </div>
       </section>
+    </>
+  );
+}
+function ContactSection() {
+  return (
+    <>
+      <div className="mx-auto text-center flex flex-col items-center justify-between bg-[#07111F] py-10 px-5">
+        <h3 className="text-xs font-semibold text-[#38BDF8] mb-3">
+          GET IN TOUCH
+        </h3>
+        <h1 className="text-5xl font-extrabold text-[#F8FAFC] mb-4">
+          Have a project or opportunity ?
+        </h1>
+        <p className="text-[#94A3B8]">Let's work together.</p>
+        <Link
+          to={`/contact`}
+          className="font-semibold text-[#07111F] text-[13px]  py-2.5 px-10 mt-3 justify-center text-center w-fit bg-[#38BDF8] border border-[#38BDF8] rounded-xl duration-300 ease-in-out cursor-pointer hover:bg-[#2f9bc9]"
+        >
+          Contact Me
+        </Link>
+      </div>
     </>
   );
 }
