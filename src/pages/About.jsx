@@ -27,9 +27,7 @@ function TimeLine() {
   return (
     <>
       <section className="py-20 px-5 bg-[#07111F]">
-        <h2 className="mb-12 text-start text-[#38BDF8] text-sm font-bold">
-          EDUCATION
-        </h2>
+        <h2 className="mb-12  text-[#38BDF8] text-sm font-bold">EDUCATION</h2>
         <div className="relative mx-auto max-w-3xl">
           <div className="absolute left-4 top-0 w-1 h-full bg-linear-180 from-[#38BDF8]  to-transparent md:left-1/2 md:-translate-x-1/2" />
           {timeline.map((item, index) => (
