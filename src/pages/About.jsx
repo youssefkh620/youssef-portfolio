@@ -11,9 +11,9 @@ export default function About() {
     <>
       <div className="py-20 bg-radial-[at_50%_99%] from-[#091828] to-[#07111F] to-60% border border-b-[#38BDF8]/12">
         <div className="mx-auto w-[90%] text-center md:w-[80%] flex flex-col items-center justify-between">
-          <h3 className="text-xs font-semibold text-[#38BDF8] mb-3">
+          <h4 className="text-xs font-semibold text-[#38BDF8] mb-3">
             ABOUT ME
-          </h3>
+          </h4>
           <h1 className="text-5xl font-extrabold text-[#F8FAFC] mb-4">
             More about my journey as a Frontend Developer.
           </h1>
