@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { projects } from "../data/Projects";
+import { projects } from "../data/projects";
 export const ProjectsContext = createContext();
 export function ProjectsProvider({ children }) {
   return (
